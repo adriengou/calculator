@@ -43,6 +43,11 @@ function operate(operator, a, b){
 }
 
 let display = document.querySelector('#display');
+let debug_a = document.getElementById("n1")
+let debug_b = document.getElementById("n2")
+let debug_operator = document.getElementById("operator")
+let debug_result = document.getElementById("result")
+
 let a = '';
 let b = '';
 let operator = '';
@@ -57,7 +62,7 @@ function setOperand(){
 }
 
 function setOperator(value){
-    if(!a){
+    if(!a && !result){
         return;
     }
 
@@ -170,12 +175,24 @@ function parse(value){
     }
 }
 
+
+function debug_display(){
+    debug_a.textContent = a;
+    debug_b.textContent = b;
+    debug_operator.textContent = operator;
+    debug_result.textContent = result;
+}
+
+
 document.addEventListener('click', function (event) {
 
 	// If the clicked element doesn't have the right selector, bail
 	if (!event.target.matches('.btn')) return;
 
 	parse(event.target.textContent)
+
+    //show variables in debug
+    //debug_display();
 
 	// Log the clicked element in the console
 	console.log(event.target.textContent);
